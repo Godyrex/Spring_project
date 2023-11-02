@@ -22,6 +22,14 @@ public class InscriptionController {
     public Inscription createInscription(@RequestBody Inscription inscription) {
         return inscriptionService.saveInscription(inscription);
     }
+    @PostMapping(path = "/{id}")
+    public Inscription createInscriptionandadd(@RequestBody Inscription inscription,@PathVariable Long id) {
+        return inscriptionService.addInscriptionAndAssignToSkier(inscription,id);
+    }
+    @PostMapping(path = "/{inscriptionId}/{courseId}")
+    public Inscription assignInscriptionandcourse(@PathVariable Long inscriptionId,@PathVariable Long courseId) {
+        return inscriptionService.assignInscriptionToCourse(inscriptionId,courseId);
+    }
 
     @GetMapping("/{id}")
     public Inscription getInscriptionById(@PathVariable Long id) {

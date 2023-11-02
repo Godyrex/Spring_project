@@ -22,6 +22,14 @@ public class SkieurController {
     public Skieur createSkieur(@RequestBody Skieur skieur) {
         return skieurService.saveSkieur(skieur);
     }
+    @PostMapping("/{id}")
+    public Skieur createSkierAndAssignToCourse(@RequestBody Skieur skieur,@PathVariable Long id) {
+        return skieurService.addSkierAndAssignToCourse(skieur,id);
+    }
+    @PostMapping("/{skieurId}/{pisteId}")
+    public Skieur SkierToPiste(@PathVariable Long skieurId,@PathVariable Long pisteId) {
+        return skieurService.assignSkierToPiste(skieurId,pisteId);
+    }
 
     @GetMapping("/{id}")
     public Skieur getSkieurById(@PathVariable Long id) {
